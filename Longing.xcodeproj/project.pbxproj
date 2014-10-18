@@ -13,6 +13,10 @@
 		AA0360D819F2070200F08833 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA0360D719F2070200F08833 /* Images.xcassets */; };
 		AA0360DB19F2070200F08833 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA0360D919F2070200F08833 /* LaunchScreen.xib */; };
 		AA0360E719F2070200F08833 /* LongingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360E619F2070200F08833 /* LongingTests.swift */; };
+		AA0360F719F21E6600F08833 /* KeywordsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360F619F21E6600F08833 /* KeywordsViewController.swift */; };
+		AA0360F919F21EC700F08833 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360F819F21EC700F08833 /* LoginViewController.swift */; };
+		AA0360FC19F2224900F08833 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FB19F2224900F08833 /* User.swift */; };
+		AA0360FE19F222CC00F08833 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FD19F222CC00F08833 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		AA0360E019F2070200F08833 /* LongingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LongingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0360E519F2070200F08833 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA0360E619F2070200F08833 /* LongingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongingTests.swift; sourceTree = "<group>"; };
+		AA0360F619F21E6600F08833 /* KeywordsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeywordsViewController.swift; path = ViewControllers/KeywordsViewController.swift; sourceTree = "<group>"; };
+		AA0360F819F21EC700F08833 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
+		AA0360FB19F2224900F08833 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		AA0360FD19F222CC00F08833 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,9 @@
 		AA0360CD19F2070200F08833 /* Longing */ = {
 			isa = PBXGroup;
 			children = (
+				AA0360FA19F2222D00F08833 /* Models */,
+				AA0360F519F21E0F00F08833 /* Interfaces */,
+				AA0360F019F218D000F08833 /* ViewControllers */,
 				AA0360D019F2070200F08833 /* AppDelegate.swift */,
 				AA0360D219F2070200F08833 /* ViewController.swift */,
 				AA0360D419F2070200F08833 /* Main.storyboard */,
@@ -110,6 +121,31 @@
 				AA0360E519F2070200F08833 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA0360F019F218D000F08833 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA0360F619F21E6600F08833 /* KeywordsViewController.swift */,
+				AA0360F819F21EC700F08833 /* LoginViewController.swift */,
+				AA0360FD19F222CC00F08833 /* SettingsViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AA0360F519F21E0F00F08833 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		AA0360FA19F2222D00F08833 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA0360FB19F2224900F08833 /* User.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +197,7 @@
 				TargetAttributes = {
 					AA0360CA19F2070200F08833 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 3366XV6W39;
 					};
 					AA0360DF19F2070200F08833 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -212,8 +249,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA0360F919F21EC700F08833 /* LoginViewController.swift in Sources */,
 				AA0360D319F2070200F08833 /* ViewController.swift in Sources */,
+				AA0360F719F21E6600F08833 /* KeywordsViewController.swift in Sources */,
+				AA0360FC19F2224900F08833 /* User.swift in Sources */,
 				AA0360D119F2070200F08833 /* AppDelegate.swift in Sources */,
+				AA0360FE19F222CC00F08833 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Longing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -346,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Longing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
