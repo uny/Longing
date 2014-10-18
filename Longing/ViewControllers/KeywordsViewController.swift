@@ -22,9 +22,12 @@ class KeywordsViewController: UICollectionViewController {
         self.collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         if !User().authenticated() {
             // If not signed in, open login view as modal
-            performSegueWithIdentifier("Login", sender: self)
+            navigationController?.performSegueWithIdentifier("Login", sender: navigationController)
         }
     }
 

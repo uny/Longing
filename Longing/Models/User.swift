@@ -10,11 +10,15 @@ import Foundation
 import Accounts
 
 class User {
-    func login() {
+    class func login() {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
+        let options = [
+            "ACFacebookAPIIdKey": "1534761860073326",
+            "ACFacebookPermissionsKey": ["public_stream"]
+        ]
         // Prompt the user for permission to their Facebook account stored in the phone's settings
-        accountStore.requestAccessToAccountsWithType(accountType, options: nil) { (granted, error) -> Void in
+        accountStore.requestAccessToAccountsWithType(accountType, options: options) { (granted, error) -> Void in
             println(granted)
             if granted {
             }

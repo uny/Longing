@@ -14,6 +14,7 @@
                     </navigationBar>
                     <connections>
                         <segue destination="QEq-6a-fTX" kind="relationship" relationship="rootViewController" id="dxa-xp-CNi"/>
+                        <segue destination="0sw-yv-LwR" kind="presentation" identifier="Login" id="ALK-0D-bAU"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="en6-Om-hC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,9 +58,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="0sw-yv-LwR" kind="presentation" identifier="Login" id="f8m-eK-1Bc"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZo-7V-OqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,19 +102,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-vX-lSO">
-                                <rect key="frame" x="243" y="362" width="115" height="30"/>
-                                <state key="normal" title="Facebook Login">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-vX-lSO">
+                                <rect key="frame" x="277" y="285" width="47" height="30"/>
+                                <state key="normal" title="LOGIN">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="login:" destination="0sw-yv-LwR" eventType="touchUpInside" id="Isx-Q3-a1M"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ivj-vX-lSO" secondAttribute="centerX" id="Ieg-Sp-JT8"/>
+                            <constraint firstAttribute="centerY" secondItem="ivj-vX-lSO" secondAttribute="centerY" id="uwd-VQ-di6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mak-QI-pg5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="586" y="972"/>
+            <point key="canvasLocation" x="-186" y="948"/>
         </scene>
     </scenes>
     <resources>
