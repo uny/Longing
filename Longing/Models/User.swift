@@ -29,7 +29,7 @@ class User {
     /**
     * Login
     */
-    class func login() {
+    class func login(completion: (Bool) -> Void) {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
         let options = [
@@ -48,6 +48,7 @@ class User {
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 userDefaults.setObject(userInfo, forKey: userKey)
                 userDefaults.synchronize()
+                completion(true)
             }
         }
     }
@@ -66,9 +67,5 @@ class User {
     func authenticated() -> Bool {
         // Both not empty
         return username != "" && uid != ""
-    }
-    
-    private func existsAccount() {
-        
     }
 }

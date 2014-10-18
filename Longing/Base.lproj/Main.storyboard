@@ -67,7 +67,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="b5Q-lQ-Jj8">
-                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="40A-yT-4Qb"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="search" id="40A-yT-4Qb">
+                            <connections>
+                                <action selector="search:" destination="QEq-6a-fTX" id="FYl-yT-88e"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="SNf-xo-Fro">
                             <connections>
                                 <segue destination="3SH-VB-hQN" kind="show" identifier="Settings" id="ph3-l8-EOB"/>

@@ -19,6 +19,8 @@
 		AA0360FE19F222CC00F08833 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FD19F222CC00F08833 /* SettingsViewController.swift */; };
 		AA03610B19F22E2B00F08833 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03610A19F22E2B00F08833 /* Accounts.framework */; };
 		AA03610D19F2560200F08833 /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA03610C19F2560200F08833 /* Keyword.swift */; };
+		AA47F79D19F28DB600FD0BCB /* Communicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA47F79C19F28DB600FD0BCB /* Communicate.swift */; };
+		AA47F79F19F28E1500FD0BCB /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA47F79E19F28E1500FD0BCB /* MultipeerConnectivity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		AA0360FD19F222CC00F08833 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		AA03610A19F22E2B00F08833 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		AA03610C19F2560200F08833 /* Keyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keyword.swift; path = Models/Keyword.swift; sourceTree = "<group>"; };
+		AA47F79C19F28DB600FD0BCB /* Communicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Communicate.swift; path = Actions/Communicate.swift; sourceTree = "<group>"; };
+		AA47F79E19F28E1500FD0BCB /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA47F79F19F28E1500FD0BCB /* MultipeerConnectivity.framework in Frameworks */,
 				AA03610B19F22E2B00F08833 /* Accounts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +96,7 @@
 		AA0360CD19F2070200F08833 /* Longing */ = {
 			isa = PBXGroup;
 			children = (
+				AA47F79B19F28D8500FD0BCB /* Actions */,
 				AA0360FA19F2222D00F08833 /* Models */,
 				AA0360F519F21E0F00F08833 /* Interfaces */,
 				AA0360F019F218D000F08833 /* ViewControllers */,
@@ -158,9 +164,18 @@
 		AA03610919F22E1600F08833 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AA47F79E19F28E1500FD0BCB /* MultipeerConnectivity.framework */,
 				AA03610A19F22E2B00F08833 /* Accounts.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA47F79B19F28D8500FD0BCB /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				AA47F79C19F28DB600FD0BCB /* Communicate.swift */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA03610D19F2560200F08833 /* Keyword.swift in Sources */,
+				AA47F79D19F28DB600FD0BCB /* Communicate.swift in Sources */,
 				AA0360F919F21EC700F08833 /* LoginViewController.swift in Sources */,
 				AA0360D319F2070200F08833 /* ViewController.swift in Sources */,
 				AA0360F719F21E6600F08833 /* KeywordsViewController.swift in Sources */,
@@ -395,10 +411,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Longing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -408,10 +426,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Longing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

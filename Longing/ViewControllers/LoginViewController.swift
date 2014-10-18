@@ -34,6 +34,11 @@ class LoginViewController: UIViewController {
     
     // Events
     @IBAction func login(sender: UIButton) {
-        User.login()
+        User.login { (result) in
+            if result {
+                // success
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
     }
 }

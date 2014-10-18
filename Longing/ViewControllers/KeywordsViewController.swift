@@ -12,6 +12,7 @@ class KeywordsViewController: UICollectionViewController {
     
     let keywordCellIdentifier = "Keyword"
     let labelTag = 10
+    var communicate : Communicate?
     
     var keywords = [String]()
 
@@ -22,6 +23,7 @@ class KeywordsViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Do any additional setup after loading the view.
+        communicate = Communicate()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -105,6 +107,11 @@ class KeywordsViewController: UICollectionViewController {
     func collectionView(collectionView: UICollectionView!, performAction action: String!, forItemAtIndexPath indexPath: NSIndexPath!, withSender sender: AnyObject!) {
     
     }
+    
     */
+    // MARK: - Events
 
+    @IBAction func search(sender: UIBarButtonItem) {
+        communicate!.search()
+    }
 }
