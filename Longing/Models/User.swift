@@ -17,6 +17,10 @@ class User {
     var username : String = ""
     var uid : String = ""
     
+    // MARK: - Class functions
+    /**
+    * Login
+    */
     class func login() {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
@@ -39,7 +43,13 @@ class User {
             }
         }
     }
-    
+    /**
+    * Logout
+    */
+    class func logout() {
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(userKey)
+    }
+    // MARK: - Instance functions
     func authenticated() -> Bool {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         return userDefaults.objectForKey(userKey) != nil
