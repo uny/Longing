@@ -91,6 +91,5 @@ class Communicate : NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelega
 }
 
 protocol CommunicateDelegate : NSObjectProtocol {
-    // func advertiser(advertiser: MCNearbyServiceAdvertiser!, didReceiveInvitationFromPeer peerID: MCPeerID!, withContext context: NSData!, invitationHandler: ((Bool, MCSession!) -> Void)!)
     func communicate(communicate: Communicate!, matched user: User, keywords: [String])
 }
