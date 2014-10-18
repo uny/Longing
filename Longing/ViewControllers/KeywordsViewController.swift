@@ -27,7 +27,7 @@ class KeywordsViewController: UICollectionViewController {
     override func viewDidAppear(animated: Bool) {
         if !User().authenticated() {
             // If not signed in, open login view as modal
-            navigationController?.performSegueWithIdentifier("Login", sender: navigationController)
+//            navigationController?.performSegueWithIdentifier("Login", sender: navigationController)
         }
     }
 

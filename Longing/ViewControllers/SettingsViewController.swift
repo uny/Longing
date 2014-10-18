@@ -21,6 +21,7 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
     let addCellIdentifier = "Add"
     
     var numberOfSections = Section.Add.toRaw()
+    var keywords = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,11 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: logoutCellIdentifier)
-//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: keywordCellIdentifier)
+        keywords = Keyword.all()
+        
+        // Removable keywords
+        tableView.setEditing(true, animated: true)
+        tableView.allowsSelectionDuringEditing = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,7 +74,8 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
             cell.textLabel?.text = User().username
             return cell
         case .Keywords:
-            let cell = tableView.dequeueReusableCellWithIdentifier(logoutCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(keywordCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel?.text = keywords[indexPath.row]
             return cell
         case .Add:
             let cell = tableView.dequeueReusableCellWithIdentifier(addCellIdentifier, forIndexPath: indexPath) as UITableViewCell
@@ -86,37 +91,41 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
             break
         case .Add:
             // Show alert with text field
-            if NSClassFromString("UIAlertController") == nil {
-                // UIAlertView
-                let alertView = UIAlertView(title: "Add Keyword", message: nil, delegate: self, cancelButtonTitle: "ADD")
-                alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
-                alertView.show()
-            } else {
-                
-            }
+            let alertView = UIAlertView(title: "Add Keyword", message: "1-\(Keyword.lettersMax()) letters", delegate: self, cancelButtonTitle: "ADD")
+            alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+            alertView.show()
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch Section.fromRaw(section)! {
+        case .Logout:
+            return "Facebook"
+        case .Keywords:
+            return "Keywords"
+        case .Add:
+            return ""
+        }
     }
-    */
 
-    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Return NO if you do not want the specified item to be editable.
+        // Only keywords section can be editted
+        return Section.fromRaw(indexPath.section)! == .Keywords
+    }
+
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            Keyword.removeAt(indexPath.row)
+            keywords = Keyword.all()
+
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.
@@ -132,6 +141,14 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
         return true
     }
     */
+    // MARK: UIAlertViewDelegate
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        let text = alertView.textFieldAtIndex(0)?.text
+        Keyword.add(text!)
+        // Reload
+        keywords = Keyword.all()
+        tableView.reloadData()
+    }
 
     /*
     // MARK: - Navigation
