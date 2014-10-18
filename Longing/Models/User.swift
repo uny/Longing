@@ -24,6 +24,10 @@ class User {
             uid = userInfo[uidKey]! as String
         }
     }
+    init(username: String, uid: String) {
+        self.username = username
+        self.uid = uid
+    }
     
     // MARK: - Class functions
     /**

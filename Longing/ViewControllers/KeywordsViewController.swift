@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KeywordsViewController: UICollectionViewController {
+class KeywordsViewController: UICollectionViewController, CommunicateDelegate {
     
     let keywordCellIdentifier = "Keyword"
     let labelTag = 10
@@ -24,6 +24,7 @@ class KeywordsViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         communicate = Communicate()
+        communicate?.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -111,9 +112,28 @@ class KeywordsViewController: UICollectionViewController {
     }
     
     */
+    // MARK: CommunicateDelegate
+    func communicate(communicate: Communicate!, matched user: User, keywords: [String]) {
+        // Matched
+        let alertView = UIAlertView(title: "Matched", message: "\(keywords)", delegate: nil, cancelButtonTitle: "OK")
+        alertView.show()
+        // Open
+        let appURL = NSURL(string: "fb:profile/\(user.uid)")
+        let browserURL = NSURL(string: "https://facebook.com/\(user.username)")
+        let application = UIApplication.sharedApplication()
+        if application.canOpenURL(appURL) {
+            application.openURL(appURL)
+        } else {
+            application.openURL(browserURL)
+        }
+    }
+    
     // MARK: - Events
 
     @IBAction func search(sender: UIBarButtonItem) {
+        let alertView = UIAlertView(title: "Started searching", message: nil, delegate: nil, cancelButtonTitle: "OK")
+        alertView.show()
+        
         communicate!.search()
     }
 }

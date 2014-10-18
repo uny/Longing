@@ -38,6 +38,19 @@ class Keyword {
         return keywords as [String]
     }
     
+    class func intersect(target: [String]) -> [String] {
+        var result = [String]()
+        let source = Keyword.all()
+        for a in source {
+            for b in target {
+                if a == b && !contains(result, a) {
+                    result.append(a)
+                }
+            }
+        }
+        return result
+    }
+    
     class func add(text: String) {
         let trimmed = text.stringByTrimmingCharactersInSet(.whitespaceAndNewlineCharacterSet())
         if trimmed == "" {
