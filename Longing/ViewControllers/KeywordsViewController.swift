@@ -22,6 +22,9 @@ class KeywordsViewController: UICollectionViewController {
         self.collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        if !User().authenticated() {
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

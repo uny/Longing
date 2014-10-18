@@ -17,6 +17,7 @@
 		AA0360F919F21EC700F08833 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360F819F21EC700F08833 /* LoginViewController.swift */; };
 		AA0360FC19F2224900F08833 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FB19F2224900F08833 /* User.swift */; };
 		AA0360FE19F222CC00F08833 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FD19F222CC00F08833 /* SettingsViewController.swift */; };
+		AA03610B19F22E2B00F08833 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03610A19F22E2B00F08833 /* Accounts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		AA0360F819F21EC700F08833 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewControllers/LoginViewController.swift; sourceTree = "<group>"; };
 		AA0360FB19F2224900F08833 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		AA0360FD19F222CC00F08833 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
+		AA03610A19F22E2B00F08833 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA03610B19F22E2B00F08833 /* Accounts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +70,7 @@
 		AA0360C219F2070200F08833 = {
 			isa = PBXGroup;
 			children = (
+				AA03610919F22E1600F08833 /* Frameworks */,
 				AA0360CD19F2070200F08833 /* Longing */,
 				AA0360E319F2070200F08833 /* LongingTests */,
 				AA0360CC19F2070200F08833 /* Products */,
@@ -146,6 +150,14 @@
 				AA0360FB19F2224900F08833 /* User.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		AA03610919F22E1600F08833 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA03610A19F22E2B00F08833 /* Accounts.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +460,7 @@
 				AA0360EC19F2070200F08833 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA0360ED19F2070200F08833 /* Build configuration list for PBXNativeTarget "LongingTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +469,7 @@
 				AA0360EF19F2070200F08833 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

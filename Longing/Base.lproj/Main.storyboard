@@ -20,7 +20,7 @@
             </objects>
             <point key="canvasLocation" x="-186" y="214"/>
         </scene>
-        <!--待機中-->
+        <!--Keywords View Controller-->
         <scene sceneID="o0b-q3-TOW">
             <objects>
                 <collectionViewController id="QEq-6a-fTX" customClass="KeywordsViewController" customModule="Longing" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,16 +49,16 @@
                             <outlet property="delegate" destination="QEq-6a-fTX" id="YBI-tL-YaX"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="待機中" id="b5Q-lQ-Jj8">
+                    <navigationItem key="navigationItem" id="b5Q-lQ-Jj8">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="40A-yT-4Qb"/>
                         <barButtonItem key="rightBarButtonItem" image="settings" id="SNf-xo-Fro">
                             <connections>
-                                <segue destination="3SH-VB-hQN" kind="show" id="ph3-l8-EOB"/>
+                                <segue destination="3SH-VB-hQN" kind="show" identifier="Settings" id="ph3-l8-EOB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="0sw-yv-LwR" kind="presentation" id="f8m-eK-1Bc"/>
+                        <segue destination="0sw-yv-LwR" kind="presentation" identifier="Login" id="f8m-eK-1Bc"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MZo-7V-OqD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,18 +69,19 @@
         <scene sceneID="dSK-tp-rH3">
             <objects>
                 <tableViewController id="3SH-VB-hQN" customClass="SettingsViewController" customModule="Longing" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="phk-qx-UPK">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="phk-qx-UPK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9OA-Hq-11A">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Logout" id="9OA-Hq-11A">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9OA-Hq-11A" id="2NJ-VU-ocw">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="3SH-VB-hQN" id="q0C-Ia-SP2"/>
                             <outlet property="delegate" destination="3SH-VB-hQN" id="oTB-Vg-rPx"/>
