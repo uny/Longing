@@ -6,27 +6,43 @@
 //  Copyright (c) 2014 Yuki Nagai. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Accounts
 
+let userKey = "user"
+let usernameKey = "username"
+let uidKey = "uid"
+
 class User {
+    var username : String = ""
+    var uid : String = ""
+    
     class func login() {
         let accountStore = ACAccountStore()
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierFacebook)
         let options = [
-            "ACFacebookAPIIdKey": "1534761860073326",
-            "ACFacebookPermissionsKey": ["public_stream"]
+            "ACFacebookAppIdKey": "1534761860073326",
         ]
         // Prompt the user for permission to their Facebook account stored in the phone's settings
         accountStore.requestAccessToAccountsWithType(accountType, options: options) { (granted, error) -> Void in
-            println(granted)
             if granted {
+                let account = accountStore.accountsWithAccountType(accountType).last as ACAccount
+                let username = account.username
+                let uid = account.valueForKey("properties")["uid"]
+                let userInfo = [
+                    usernameKey: username,
+                    uidKey: "\(uid)"
+                ]
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setObject(userInfo, forKey: userKey)
+                userDefaults.synchronize()
             }
         }
     }
     
     func authenticated() -> Bool {
-        return false
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        return userDefaults.objectForKey(userKey) != nil
     }
     
     private func existsAccount() {
