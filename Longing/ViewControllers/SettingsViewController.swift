@@ -85,7 +85,8 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch Section.fromRaw(indexPath.section)! {
         case .Logout:
-            break
+            let alertView = UIAlertView(title: "Logout?", message: "", delegate: self, cancelButtonTitle: "NO", otherButtonTitles: "YES")
+            alertView.show()
         case .Keywords:
             break
         case .Add:
@@ -148,11 +149,18 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
     */
     // MARK: UIAlertViewDelegate
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        let text = alertView.textFieldAtIndex(0)?.text
-        Keyword.add(text!)
-        // Reload
-        keywords = Keyword.all()
-        tableView.reloadData()
+        if let textField = alertView.textFieldAtIndex(0) {
+            // Adding keyword
+            let text = textField.text
+            Keyword.add(text!)
+            // Reload
+            keywords = Keyword.all()
+            tableView.reloadData()
+        } else if (buttonIndex == 1) {
+            // Logging out
+            User.logout()
+            navigationController?.popToRootViewControllerAnimated(true)
+        }
     }
 
     /*

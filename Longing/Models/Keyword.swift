@@ -44,7 +44,7 @@ class Keyword {
             return
         }
         var keywords = all()
-        keywords.append(trimmed)
+        keywords.append(trimmed as NSString)
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(keywords, forKey: keywordsKey)
         userDefaults.synchronize()

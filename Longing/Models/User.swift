@@ -20,8 +20,8 @@ class User {
     init() {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         if let userInfo = userDefaults.dictionaryForKey(userKey) {
-            username = userInfo[usernameKey] as NSString
-            uid = userInfo[uidKey] as NSString
+            username = userInfo[usernameKey]! as String
+            uid = userInfo[uidKey]! as String
         }
     }
     
@@ -42,12 +42,13 @@ class User {
                 let username = account.username
                 let uid = account.valueForKey("properties")["uid"]
                 let userInfo = [
-                    usernameKey: username,
-                    uidKey: "\(uid)"
+                    usernameKey: username as NSString,
+                    uidKey: "\(uid!!)" as NSString
                 ]
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 userDefaults.setObject(userInfo, forKey: userKey)
                 userDefaults.synchronize()
+                println(userDefaults.objectForKey(userKey))
                 completion(true)
             }
         }
