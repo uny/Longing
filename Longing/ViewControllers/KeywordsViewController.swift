@@ -24,6 +24,13 @@ class KeywordsViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        keywords = Keyword.all()
+        collectionView?.reloadData()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -31,8 +38,6 @@ class KeywordsViewController: UICollectionViewController {
             // If not signed in, open login view as modal
 //            navigationController?.performSegueWithIdentifier("Login", sender: navigationController)
         }
-        keywords = Keyword.all()
-        collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

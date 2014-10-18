@@ -20,7 +20,6 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
     let keywordCellIdentifier = "Keyword"
     let addCellIdentifier = "Add"
     
-    var numberOfSections = Section.Add.toRaw()
     var keywords = [String]()
 
     override func viewDidLoad() {
@@ -48,7 +47,7 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // Return the number of sections.
         // Remove keyword text area if keywords over max
-        return Keyword.isFull() ? numberOfSections : numberOfSections + 1
+        return Section.Add.toRaw() + 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,10 +89,15 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
         case .Keywords:
             break
         case .Add:
-            // Show alert with text field
-            let alertView = UIAlertView(title: "Add Keyword", message: "1-\(Keyword.lettersMax()) letters", delegate: self, cancelButtonTitle: "ADD")
-            alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
-            alertView.show()
+            if Keyword.isFull() {
+                let alertView = UIAlertView(title: "Full of keywords", message: nil, delegate: nil, cancelButtonTitle: "OK")
+                alertView.show()
+            } else {
+                // Show alert with text field
+                let alertView = UIAlertView(title: "Add Keyword", message: "1-\(Keyword.lettersMax()) letters", delegate: self, cancelButtonTitle: "ADD")
+                alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+                alertView.show()
+            }
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -122,8 +126,9 @@ class SettingsViewController: UITableViewController, UIAlertViewDelegate {
             // Delete the row from the data source
             Keyword.removeAt(indexPath.row)
             keywords = Keyword.all()
-
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            tableView.setNeedsLayout()
         }
     }
 
