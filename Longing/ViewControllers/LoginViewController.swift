@@ -38,6 +38,11 @@ class LoginViewController: UIViewController {
             if result {
                 // success
                 self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                dispatch_sync(dispatch_get_main_queue(), {
+                    let alertView = UIAlertView(title: "Login Error", message: "Needs Facebook Authentication", delegate: nil, cancelButtonTitle: "OK")
+                    alertView.show()
+                })
             }
         }
     }

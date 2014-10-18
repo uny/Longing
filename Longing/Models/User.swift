@@ -49,8 +49,8 @@ class User {
                 userDefaults.setObject(userInfo, forKey: userKey)
                 userDefaults.synchronize()
                 println(userDefaults.objectForKey(userKey))
-                completion(true)
             }
+            completion(granted)
         }
     }
     /**
