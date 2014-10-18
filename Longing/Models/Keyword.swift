@@ -9,7 +9,7 @@
 import Foundation
 
 let keywordsKey = "keywords"
-let keywordsMax = 9
+let keywordsMax = 6
 
 class Keyword {
     
@@ -47,6 +47,7 @@ class Keyword {
         keywords.append(trimmed)
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(keywords, forKey: keywordsKey)
+        userDefaults.synchronize()
     }
     
     class func removeAt(index : Int) {
@@ -54,5 +55,6 @@ class Keyword {
         keywords.removeAtIndex(index)
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setObject(keywords, forKey: keywordsKey)
+        userDefaults.synchronize()
     }
 }

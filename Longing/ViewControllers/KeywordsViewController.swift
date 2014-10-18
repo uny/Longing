@@ -8,9 +8,12 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
-
 class KeywordsViewController: UICollectionViewController {
+    
+    let keywordCellIdentifier = "Keyword"
+    let labelTag = 10
+    
+    var keywords = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +21,18 @@ class KeywordsViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
         if !User().authenticated() {
             // If not signed in, open login view as modal
 //            navigationController?.performSegueWithIdentifier("Login", sender: navigationController)
         }
+        keywords = Keyword.all()
+        collectionView?.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,20 +53,20 @@ class KeywordsViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //#warning Incomplete method implementation -- Return the number of items in the section
-        return 0
+        return keywords.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(keywordCellIdentifier, forIndexPath: indexPath) as UICollectionViewCell
     
         // Configure the cell
+        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderWidth = 1.0
     
         return cell
     }
