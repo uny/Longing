@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Yuki Nagai. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import Accounts
 
 let userKey = "user"
@@ -16,6 +16,14 @@ let uidKey = "uid"
 class User {
     var username : String = ""
     var uid : String = ""
+    
+    init() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        if let userInfo = userDefaults.dictionaryForKey(userKey) {
+            username = userInfo[usernameKey] as NSString
+            uid = userInfo[uidKey] as NSString
+        }
+    }
     
     // MARK: - Class functions
     /**
@@ -49,10 +57,15 @@ class User {
     class func logout() {
         NSUserDefaults.standardUserDefaults().removeObjectForKey(userKey)
     }
+    
     // MARK: - Instance functions
+    /**
+    * Authenticate
+    * :returns: Authenticated
+    */
     func authenticated() -> Bool {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        return userDefaults.objectForKey(userKey) != nil
+        // Both not empty
+        return username != "" && uid != ""
     }
     
     private func existsAccount() {

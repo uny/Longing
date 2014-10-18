@@ -18,6 +18,7 @@
 		AA0360FC19F2224900F08833 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FB19F2224900F08833 /* User.swift */; };
 		AA0360FE19F222CC00F08833 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0360FD19F222CC00F08833 /* SettingsViewController.swift */; };
 		AA03610B19F22E2B00F08833 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA03610A19F22E2B00F08833 /* Accounts.framework */; };
+		AA03610D19F2560200F08833 /* Keyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA03610C19F2560200F08833 /* Keyword.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		AA0360FB19F2224900F08833 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		AA0360FD19F222CC00F08833 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ViewControllers/SettingsViewController.swift; sourceTree = "<group>"; };
 		AA03610A19F22E2B00F08833 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		AA03610C19F2560200F08833 /* Keyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keyword.swift; path = Models/Keyword.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				AA0360FB19F2224900F08833 /* User.swift */,
+				AA03610C19F2560200F08833 /* Keyword.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA03610D19F2560200F08833 /* Keyword.swift in Sources */,
 				AA0360F919F21EC700F08833 /* LoginViewController.swift in Sources */,
 				AA0360D319F2070200F08833 /* ViewController.swift in Sources */,
 				AA0360F719F21E6600F08833 /* KeywordsViewController.swift in Sources */,

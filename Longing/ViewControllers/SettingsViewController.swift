@@ -9,6 +9,18 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
+    
+    enum Section : Int {
+        case Logout = 0
+        case Keywords
+        case Add
+    }
+    
+    let logoutCellIdentifier = "Logout"
+    let keywordCellIdentifier = "Keyword"
+    let addCellIdentifier = "Add"
+    
+    var numberOfSections = Section.Add.toRaw()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +30,8 @@ class SettingsViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: logoutCellIdentifier)
+//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: keywordCellIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,26 +42,41 @@ class SettingsViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        // Remove keyword text area if keywords over max
+        return Keyword.isFull() ? numberOfSections : numberOfSections + 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        
+        switch Section.fromRaw(section)! {
+        case .Logout:
+            return 1
+        case .Keywords:
+            return Keyword.count()
+        case .Add:
+            return 1
+        }
     }
 
-    /*
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         // Configure the cell...
-
-        return cell
+        switch Section.fromRaw(indexPath.section)! {
+        case .Logout:
+            let cell = tableView.dequeueReusableCellWithIdentifier(logoutCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            cell.textLabel?.text = User().username
+            return cell
+        case .Keywords:
+            let cell = tableView.dequeueReusableCellWithIdentifier(logoutCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            return cell
+        case .Add:
+            let cell = tableView.dequeueReusableCellWithIdentifier(logoutCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            return cell
+        }
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
