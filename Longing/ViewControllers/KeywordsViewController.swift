@@ -70,10 +70,12 @@ class KeywordsViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(keywordCellIdentifier, forIndexPath: indexPath) as UICollectionViewCell
-    
+        let label = cell.contentView.viewWithTag(labelTag) as UILabel
+        
         // Configure the cell
         cell.layer.borderColor = UIColor.blackColor().CGColor
         cell.layer.borderWidth = 1.0
+        label.text = keywords[indexPath.row]
     
         return cell
     }

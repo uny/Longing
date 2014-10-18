@@ -44,7 +44,7 @@ class User {
                 let userInfo = [
                     usernameKey: username as NSString,
                     uidKey: "\(uid!!)" as NSString
-                ]
+                ] as NSDictionary
                 let userDefaults = NSUserDefaults.standardUserDefaults()
                 userDefaults.setObject(userInfo, forKey: userKey)
                 userDefaults.synchronize()
