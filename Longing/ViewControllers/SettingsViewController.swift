@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, UIAlertViewDelegate {
     
     enum Section : Int {
         case Logout = 0
@@ -73,9 +73,29 @@ class SettingsViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier(logoutCellIdentifier, forIndexPath: indexPath) as UITableViewCell
             return cell
         case .Add:
-            let cell = tableView.dequeueReusableCellWithIdentifier(logoutCellIdentifier, forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(addCellIdentifier, forIndexPath: indexPath) as UITableViewCell
             return cell
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch Section.fromRaw(indexPath.section)! {
+        case .Logout:
+            break
+        case .Keywords:
+            break
+        case .Add:
+            // Show alert with text field
+            if NSClassFromString("UIAlertController") == nil {
+                // UIAlertView
+                let alertView = UIAlertView(title: "Add Keyword", message: nil, delegate: self, cancelButtonTitle: "ADD")
+                alertView.alertViewStyle = UIAlertViewStyle.PlainTextInput
+                alertView.show()
+            } else {
+                
+            }
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     /*
@@ -122,5 +142,5 @@ class SettingsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    // MARK: - Private functions
 }
