@@ -23,7 +23,8 @@ class KeywordsViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         if !User().authenticated() {
-            
+            // If not signed in, open login view as modal
+            performSegueWithIdentifier("Login", sender: self)
         }
     }
 
